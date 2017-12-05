@@ -35,13 +35,9 @@ var mouseToWorld;
 canvas.style.backgroundColor = BACKGROUND_COLOR;
 var ui = new UI(context);
 
-// Constants
-const xAdjust = 0; const yAdjust = 0;
-const stepSize = .001;
-
 // Called when page has loaded
 function main(){
-  // Same functions used in class for moveTo and lineTo
+  // Functions draw at a transformed point
   function moveToTx(x,y,z,Tx) {
     var loc = [x,y,z];
     var locTx = m4.transformPoint(Tx,loc);
@@ -179,51 +175,51 @@ function main(){
     // Controll axis'
     if(keyName === "ArrowUp"){
       event.preventDefault();
-      rotSpeedX += stepSize;
+      rotSpeedX += DTHETA;
     }
     if(keyName === "ArrowDown"){
       event.preventDefault();
-      rotSpeedX -= stepSize;
+      rotSpeedX -= DTHETA;
     }
     if(keyName === "ArrowLeft"){
       event.preventDefault();
-      rotSpeedY -= stepSize;
+      rotSpeedY -= DTHETA;
     }
     if(keyName === "ArrowRight"){
       event.preventDefault();
-      rotSpeedY += stepSize;
+      rotSpeedY += DTHETA;
     }
     if(keyName === "w"){
       event.preventDefault();
-      camPosY += 1;
+      camPosY += VIEW_TILT_STEP_SIZE;
     }
     if(keyName === "s"){
       event.preventDefault();
-      camPosY -= 1;
+      camPosY -= VIEW_TILT_STEP_SIZE;
     }
     if(keyName === "d"){
       event.preventDefault();
-      theta += .05;
+      theta += VIEW_ROTATE_STEP_SIZE;
     }
     if(keyName === "a"){
       event.preventDefault();
-      theta -= .05;
+      theta -= VIEW_ROTATE_STEP_SIZE;
     }
     if(keyName === "l"){
       event.preventDefault();
-      spindleX += 5;
+      spindleX += TRANSLATION_STEP_SIZE;
     }
     if(keyName === "j"){
       event.preventDefault();
-      spindleX -= 5;
+      spindleX -= TRANSLATION_STEP_SIZE;
     }
     if(keyName === "i"){
       event.preventDefault();
-      spindleZ += 5;
+      spindleZ += TRANSLATION_STEP_SIZE;
     }
     if(keyName === "k"){
       event.preventDefault();
-      spindleZ -= 5;
+      spindleZ -= TRANSLATION_STEP_SIZE;
     }
   });
   /** Drawing **/
